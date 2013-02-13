@@ -1,0 +1,7 @@
+# Output files
+donaties*
+index.html
+# Config file
+config.txt
+# Private stuff
+teamlist.pl
