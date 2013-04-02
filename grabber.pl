@@ -104,12 +104,15 @@ sub get_peep($$) {
 	my @doc = split /\n/, $doc;
 
 	my $line = shift @doc;
+	chomp $line;
 	while ( $line !~ /class="actionbanner"/ && $line ) {
+		chomp $line;
 		$line = shift @doc;
 	}
 	#die $doc;
 	while ( $line !~ /class="tdbuttonsupport"/ && $line ) {
 		$line = shift @doc;
+		chomp $line;
 		if ( $line =~ /class="actionbannerimage"/ ) {
 			$line = shift @doc;
 			$line =~ /src=\"(http\:\/\/.*?)\"/;
@@ -138,9 +141,11 @@ sub get_peep($$) {
 	}
 	while ( $line !~ /sidebaritem_actionsummary/ && $line ) {
 		$line = shift @doc;
+		chomp $line;
 	}
-	while ( $line !~ /class="totalresult"/ ) {
+	while ( $line !~ /class="totalresult"/ && $line ) {
 		$line = shift @doc;
+		chomp $line;
 		if ( $line =~ /Gedoneerd/ ) {
 			$line = shift @doc;
 			$line =~ s/\<.*?\>//g;
